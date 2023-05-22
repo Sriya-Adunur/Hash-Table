@@ -1,0 +1,44 @@
+{
+  "tests": [
+    {
+      "name": "coverage",
+      "setup": "sudo -H pip3 install coverage >/dev/null 2>&1",
+      "run": "python -m coverage run -p hash_quad_tests.py 2>/dev/null; python -m coverage run -p concordance_tests.py 2>/dev/null; python -m coverage combine; python -m coverage report -m --fail-under=100",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": null
+    },
+    {
+      "name": "type check",
+      "setup": "sudo -H python3 -m pip install mypy==0.982 >/dev/null 2>&1",
+      "run": "echo \"mypy type check\"; mypy --disallow-untyped-defs concordance.py concordance_tests.py",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": null
+    },
+    {
+      "name": "hash_quad tests",
+      "setup": "",
+      "run": "python hash_quad_tests.py",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": null
+    },
+    {
+      "name": "concordance tests",
+      "setup": "",
+      "run": "python concordance_tests.py",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": null
+    }
+  ]
+}

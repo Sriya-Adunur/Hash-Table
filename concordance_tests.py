@@ -24,6 +24,13 @@ class TestList(unittest.TestCase):
         conc.write_concordance("declaration_con.txt")
         self.assertTrue(compare_files("declaration_con.txt", "declaration_sol.txt"))
 
+    def test_04(self) -> None:
+        conc = Concordance()
+        with self.assertRaises(FileNotFoundError):  # uses context manager for checking exception
+            conc.load_stop_table("stops_words.txt")
+        with self.assertRaises(FileNotFoundError):  # uses context manager for checking exception
+            conc.load_concordance_table("file3.txt")
+
 # Compare files - takes care of CR/LF, LF issues
 def compare_files(file1: str, file2: str) -> bool:
     match = True

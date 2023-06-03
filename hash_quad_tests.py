@@ -91,7 +91,7 @@ class TestList(unittest.TestCase):
         self.assertEqual(ht.get_index("mouse"), 4)
         self.assertAlmostEqual(ht.get_load_factor(), 3 / 7)
 
-        ht.insert("elephant", [12]) # hash table should be resized
+        ht.insert("elephant", [12])  # hash table should be resized
         self.assertEqual(ht.get_num_items(), 4)
         self.assertEqual(ht.get_table_size(), 15)
         self.assertAlmostEqual(ht.get_load_factor(), 4 / 15)
@@ -102,6 +102,25 @@ class TestList(unittest.TestCase):
         keys = ht.get_all_keys()
         keys.sort()
         self.assertEqual(keys, ["cat", "dog", "elephant", "mouse"])
+
+    def tests_5(self) -> None:
+        hash_table = HashTable(5)
+        # Insert some elements to fill the table
+        hash_table.insert("apple", 1)
+        hash_table.insert("banana", 2)
+        hash_table.insert("cherry", 3)
+
+        hash_table.hash_table = [
+            ("apple", 1),
+            ("banana", 2),
+            ("cherry", 3),
+            None,
+            ("dog", 4)
+        ]
+        hash_table.resize()
+
+
+
 
 if __name__ == '__main__':
    unittest.main()
